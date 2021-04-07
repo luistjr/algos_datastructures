@@ -1,6 +1,6 @@
 // two sum function
 
-let array = [1,2,3,4]
+// let array = [1,2,3,4]
 // let targetSum = 5;
 
 // solution 1
@@ -98,7 +98,7 @@ let array = [1,2,3,4]
 
 // UNIQUE VALUES
 
-let arrayTwo = [1,1,1,2,3,3,4,4,5,6,6,7,8]
+// let arrayTwo = [1,1,1,2,3,3,4,4,5,6,6,7,8]
 
 // function countUniqueValues(arrayTwo){
 //     let counter = 0;
@@ -135,6 +135,94 @@ let arrayTwo = [1,1,1,2,3,3,4,4,5,6,6,7,8]
 
 // SLIDING WINDOW 
 
-function maxSubarraySum(array, n){
 
+// Not sliding window
+
+// function maxSubarraySum(array, n){
+//     if (n > array.length)return null;
+
+//     let maxNum = -Infinity;
+
+//     for(let i = 0; i < array.length - n + 1; i++){
+//         let temp = 0;
+//         for(let j = i + 1; j < n; j++){
+//             temp += array[i+j];
+//         }
+//         if (temp > maxNum){
+//             maxNum = temp;
+//         }
+//     }
+//     return maxNum;
+// };
+
+// console.log(maxSubarraySum([1,2,3,4], 2));
+
+
+// THIS IS THE REAL SOLUTION
+
+// function maxSubarraySum(arr, num){
+//     let maxSum = 0;
+//     let tempSum = 0;
+
+//     if (arr.length < num) return null;
+
+//     for(let i = 0; i < num; i++){
+//         maxSum += arr[i];
+//     }
+    
+//     tempSum = maxSum;
+//     for (let i = num; i < arr.length; i++){
+//         tempSum = tempSum - arr[i - num] + arr[i];
+//         maxSum = Math.max(maxSum, tempSum);
+//     }
+//     return maxSum;
+// }
+
+// console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3], 3))
+
+// time complexity - o(n);
+
+// --------------------- Recursion Function ----------------------
+
+// function countDown(num){
+//     if(num <= 0){
+//         console.log("We're all done!");
+//         return;
+//     }
+
+//     console.log(num);
+//     num--
+//     countDown(num);
+// }
+
+// countDown(5);
+
+// function sumRange(num){
+//     // base case
+//     if(num === 1) return 1;
+//     console.log(num);
+//     return num + sumRange(num-1);
+// }
+
+// console.log(sumRange(5));
+
+// FACTORIAL //
+
+// non-recursive solution 
+
+// function factorial(num){
+//     let total = 1;
+//     for (let i = num; i > 1; i--){
+//         total*= i;
+//     }
+//     return total;
+// }
+
+
+
+function factorial(num){
+    if(num === 1) return num;
+    return num * factorial(num - 1);
 }
+
+console.log(factorial(5));
