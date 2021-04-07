@@ -218,11 +218,61 @@
 //     return total;
 // }
 
+// function factorial(num){
+//     if(num === 1) return num;
+//     return num * factorial(num - 1);
+// }
 
+// console.log(factorial(5));
 
-function factorial(num){
-    if(num === 1) return num;
-    return num * factorial(num - 1);
+// RECURSION HELPER METHOD //
+
+// function collectOddValues(arr){
+
+//     let result = [];
+
+//     // adding to results 
+
+//     function helper(helperInput){
+//         if(helperInput.length === 0){
+//             return;
+//         }
+//         // if the first index value is not divisble by 2, then it's odd
+//         // push it into the result array
+
+//         if(helperInput[0] % 2 !== 0){
+//             result.push(helperInput[0])
+//         }
+
+//         // we create a subarray that excludes the first number
+//         helper(helperInput.slice(1))
+//     }
+
+//     helper(arr)
+//     return result;
+// }
+
+// PURE RECURSION 
+
+function collectOddValues(arr){
+
+    // it's going to be an empty array everytime is runs
+    let newArr = [];
+
+    // check if the array is empty
+    if(arr.length === 0){
+        return newArr;
+    }
+
+    // check if the first num is odd, if yes - push to new array
+    if(arr[0] % 2 !== 0){
+        newArr.push(arr[0]);
+    }
+
+    // assign newArr to concat (merge two or more arrays) to the rest of the array
+    // [1,2,3,4,5] => [2,3,4,5].slice(1) => [3,4,5]
+    newArr = newArr.concat(collectOddValues(arr.slice(1)));
+    return newArr;
 }
 
-console.log(factorial(5));
+console.log(collectOddValues([1,2,3,4]))
