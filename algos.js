@@ -299,31 +299,95 @@
 //         } else if (obj[s[i]]) {
 //             obj[s[i]] += 1;
 //             console.log("second one", obj[s[i]])
-            
+
 //             if (obj[s[i]] === 2){
 //                 return s[i]
 //             }
 //         } 
 //     }
 
-    // find the keys that equal 2 and returning it 
-    // return Object.keys(obj).find(key => obj[key] === 2); 
+// find the keys that equal 2 and returning it 
+// return Object.keys(obj).find(key => obj[key] === 2); 
 // }
 
 // console.log(solution(s));
 
 // LINEAR SEARCH PRACTICE
 
-const array = [3,5,6,2,1];
-const value = 2;
+// const array = [3, 5, 6, 2, 1];
+// const value = 2;
 
-function linearSearch(array){
-    for(let i = 0; i < array.length; i++){
-        if(array[i] === value){
-            return i; 
-        }
+// function linearSearch(array, value) {
+//     for (let i = 0; i < array.length; i++) {
+//         if (array[i] === value) return i;
+//     }
+//     return -1;
+// }
+
+// console.log(linearSearch(array, value));
+
+// time complexity - best case o(1); average o(n); worst case o(n); 
+
+// BINARY SEARCH
+
+let array = [1,2,3,4,5,6,7,8];
+let value = 2; 
+
+// function binarySearch(array, value){
+
+//     // create two variables - starting and ending
+//     let leftPointer = 0; 
+//     let rightPointer = array.length - 1; 
+//     let middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+    
+//     while(array[middlePointer] !== value && leftPointer <= rightPointer){
+//         if(value < array[middlePointer]){
+//             rightPointer = middlePointer - 1;
+//         } else {
+//             leftPointer = middlePointer + 1;
+//         }
+//         middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+//     }
+//     if (array[middlePointer] === value){
+//         return middlePointer;
+//     } else {
+//         return -1; 
+//     } 
+// }
+
+
+// BINARY SEARCH - SHORTER VERSION
+
+function binarySearch(array, value){
+
+    // create two variables - starting and ending
+    let leftPointer = 0; 
+    let rightPointer = array.length - 1; 
+
+    // use the average to find the middle point
+    let middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+
+    // if the middle point value does not equal the value OR start is less than or greater than the end, run the loop
+    
+    while(array[middlePointer] !== value && leftPointer <= rightPointer){
+
+        // if value is less than the middle point, then move the right pointer to the index right before the previous middle point
+
+        if(value < array[middlePointer]) rightPointer = middlePointer - 1;
+
+        // else start needs to move to the index right after the previous middle point
+        else leftPointer = middlePointer + 1;
+
+        // recalculate the average everytime it loops 
+
+        middlePointer = Math.floor((rightPointer + leftPointer) / 2);
     }
-    return -1;
+
+    // this needs to be OUTSIDE of the while loop or else it'll keep looping
+    // if the middlePoint equals the value then return the value;
+    // if the middlePoint does not = value or is in the array then return -1 
+
+    return array[middlePointer] === value ? middlePointer : -1;
 }
 
-console.log(linearSearch(array));
+console.log(binarySearch(array, value))
