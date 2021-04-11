@@ -9,13 +9,13 @@
 // memory complexity = o(N)
 
 // function twoNumberSum(array, targetSum) {
-	
+
 // 	for(let i = 0; i < array.length - 1; i++){
 // 		let num1 = array[i];
-		
+
 // 		for(let j = i + 1; j < array.length; j++){
 // 			let num2 = array[j];
-			
+
 // 			if(num1 + num2 === targetSum){
 // 				return [num1, num2];
 // 			}
@@ -104,7 +104,7 @@
 //     let counter = 0;
 //     let left = 0;
 //     let right = arrayTwo.length - 1
-    
+
 //     while(left < right){
 //         if(arrayTwo[left] != arrayTwo[right]){
 //             counter++;
@@ -169,7 +169,7 @@
 //     for(let i = 0; i < num; i++){
 //         maxSum += arr[i];
 //     }
-    
+
 //     tempSum = maxSum;
 //     for (let i = num; i < arr.length; i++){
 //         tempSum = tempSum - arr[i - num] + arr[i];
@@ -254,25 +254,76 @@
 
 // PURE RECURSION 
 
-function collectOddValues(arr){
+// function collectOddValues(arr){
 
-    // it's going to be an empty array everytime is runs
-    let newArr = [];
+//     // it's going to be an empty array everytime is runs
+//     let newArr = [];
 
-    // check if the array is empty
-    if(arr.length === 0){
-        return newArr;
+//     // check if the array is empty
+//     if(arr.length === 0){
+//         return newArr;
+//     }
+
+//     // check if the first num is odd, if yes - push to new array
+//     if(arr[0] % 2 !== 0){
+//         newArr.push(arr[0]);
+//     }
+
+//     // assign newArr to concat (merge two or more arrays) to the rest of the array
+//     // [1,2,3,4,5] => [2,3,4,5].slice(1) => [3,4,5]
+//     newArr = newArr.concat(collectOddValues(arr.slice(1)));
+//     return newArr;
+// }
+
+// console.log(collectOddValues([1,2,3,4]))
+
+// let s = "codility";
+
+// function solution(s) {
+
+//     // create a hash map 
+//     let obj = {};
+
+//     // loop through the string 
+
+//     for (let i = 0; i < s.length; i++) {
+
+//         // if the value is not in the hash map 
+//         // create a key and equal it to 1 
+
+//         if (!obj[s[i]]) {
+//             // watch out for the return statement.. if you use a return statement, it will end the conditional
+//             obj[s[i]] = 1;
+//             // if the value is in the hash map 
+//             // add 1 to key 
+//         } else if (obj[s[i]]) {
+//             obj[s[i]] += 1;
+//             console.log("second one", obj[s[i]])
+            
+//             if (obj[s[i]] === 2){
+//                 return s[i]
+//             }
+//         } 
+//     }
+
+    // find the keys that equal 2 and returning it 
+    // return Object.keys(obj).find(key => obj[key] === 2); 
+// }
+
+// console.log(solution(s));
+
+// LINEAR SEARCH PRACTICE
+
+const array = [3,5,6,2,1];
+const value = 2;
+
+function linearSearch(array){
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === value){
+            return i; 
+        }
     }
-
-    // check if the first num is odd, if yes - push to new array
-    if(arr[0] % 2 !== 0){
-        newArr.push(arr[0]);
-    }
-
-    // assign newArr to concat (merge two or more arrays) to the rest of the array
-    // [1,2,3,4,5] => [2,3,4,5].slice(1) => [3,4,5]
-    newArr = newArr.concat(collectOddValues(arr.slice(1)));
-    return newArr;
+    return -1;
 }
 
-console.log(collectOddValues([1,2,3,4]))
+console.log(linearSearch(array));
