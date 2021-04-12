@@ -330,8 +330,8 @@
 
 // BINARY SEARCH
 
-let array = [1,2,3,4,5,6,7,8];
-let value = 2; 
+// let array = [1,2,3,4,5,6,7,8];
+// let value = 2; 
 
 // function binarySearch(array, value){
 
@@ -339,7 +339,7 @@ let value = 2;
 //     let leftPointer = 0; 
 //     let rightPointer = array.length - 1; 
 //     let middlePointer = Math.floor((rightPointer + leftPointer) / 2);
-    
+
 //     while(array[middlePointer] !== value && leftPointer <= rightPointer){
 //         if(value < array[middlePointer]){
 //             rightPointer = middlePointer - 1;
@@ -358,36 +358,88 @@ let value = 2;
 
 // BINARY SEARCH - SHORTER VERSION
 
-function binarySearch(array, value){
+// function binarySearch(array, value){
 
-    // create two variables - starting and ending
-    let leftPointer = 0; 
-    let rightPointer = array.length - 1; 
+//     // create two variables - starting and ending
+//     let leftPointer = 0; 
+//     let rightPointer = array.length - 1; 
 
-    // use the average to find the middle point
-    let middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+//     // use the average to find the middle point
+//     let middlePointer = Math.floor((rightPointer + leftPointer) / 2);
 
-    // if the middle point value does not equal the value OR start is less than or greater than the end, run the loop
-    
-    while(array[middlePointer] !== value && leftPointer <= rightPointer){
+//     // if the middle point value does not equal the value OR start is less than or greater than the end, run the loop
 
-        // if value is less than the middle point, then move the right pointer to the index right before the previous middle point
+//     while(array[middlePointer] !== value && leftPointer <= rightPointer){
 
-        if(value < array[middlePointer]) rightPointer = middlePointer - 1;
+//         // if value is less than the middle point, then move the right pointer to the index right before the previous middle point
 
-        // else start needs to move to the index right after the previous middle point
-        else leftPointer = middlePointer + 1;
+//         if(value < array[middlePointer]) rightPointer = middlePointer - 1;
 
-        // recalculate the average everytime it loops 
+//         // else start needs to move to the index right after the previous middle point
+//         else leftPointer = middlePointer + 1;
 
-        middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+//         // recalculate the average everytime it loops 
+
+//         middlePointer = Math.floor((rightPointer + leftPointer) / 2);
+//     }
+
+//     // this needs to be OUTSIDE of the while loop or else it'll keep looping
+//     // if the middlePoint equals the value then return the value;
+//     // if the middlePoint does not = value or is in the array then return -1 
+
+//     return array[middlePointer] === value ? middlePointer : -1;
+// }
+
+// console.log(binarySearch(array, value))
+
+
+// BALLOONS CHALLENGE 
+
+// create a function that takes in a strng of uppercase letters
+// iterate through the string to see if the characters "BALLOON" are in the string
+// if they are - remove the characters and add 1 to the counter (number of moves)
+// if not return 0; 
+
+// for of iterates through arrays and strings
+// for in iterates through objects 
+
+let s = "BAONXXOLL";
+let sTwo = "BAOOLLNNOLOLGBAX"
+
+
+function solution(s) {
+
+    let wordMatch = "BALLOON";
+    let count = 0;
+    let wordObj = {};
+
+    for (let character of s) {
+        wordObj[character] = ++wordObj[character] || 1
     }
 
-    // this needs to be OUTSIDE of the while loop or else it'll keep looping
-    // if the middlePoint equals the value then return the value;
-    // if the middlePoint does not = value or is in the array then return -1 
+    while (wordObj['B'] > 0 && wordObj['A'] > 0 && wordObj['L'] > 1 && wordObj['O'] > 1 && wordObj['N']) {
+        wordObj['B'] -= 1;
+        wordObj['A'] -= 1;
+        wordObj['L'] -= 2;
+        wordObj['O'] -= 2;
+        wordObj['N'] -= 1;
 
-    return array[middlePointer] === value ? middlePointer : -1;
+        count++
+    }
+    return count;
 }
 
-console.log(binarySearch(array, value))
+console.log(solution(sTwo));
+
+// NAIVE STRING SEARCH
+
+// let firstArray = wowomgzomg;
+// let secondArray = omg; 
+
+// function naiveSearch(firstArray, secondArray){
+//     for(let i = 0; i < firstArray.length; i++){
+//         for(let j = 0; j < secondArray.length; j++){
+//             if
+//         }
+//     }
+// }
